@@ -1,0 +1,7 @@
+{
+  "name": "blastapp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
