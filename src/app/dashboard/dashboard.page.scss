@@ -1,0 +1,39 @@
+.post-container {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  background-color: #fff;
+}
+
+.avatar-container {
+  display: flex;
+  align-items: center;
+}
+
+.username {
+  margin-left: 8px;
+}
+
+.post-image-container {
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+}
+
+.post-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.interactions-container {
+  margin-top: 8px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.interaction-icon {
+  font-size: 24px;
+  margin-right: 16px;
+  color: #000;
+}

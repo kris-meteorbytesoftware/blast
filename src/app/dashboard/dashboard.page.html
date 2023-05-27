@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>dashboard</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">dashboard</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-list>
+    <ion-item *ngFor="let post of posts">
+      <div class="post-container">
+        <div class="avatar-container">
+          <ion-avatar slot="start">
+            <img [src]="post.user.avatar" />
+          </ion-avatar>
+          <ion-label>
+            <h2>{{ post.user.username }}</h2>
+          </ion-label>
+        </div>
+        <div class="post-image-container">
+          <img [src]="post.image" class="post-image" />
+        </div>
+        <div class="interactions-container">
+          <ion-icon name="heart-outline" class="interaction-icon"></ion-icon>
+          <ion-icon
+            name="chatbubble-outline"
+            class="interaction-icon"
+          ></ion-icon>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

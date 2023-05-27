@@ -1,0 +1,28 @@
+ion-content {
+  --ion-background-color: white;
+}
+
+ion-title {
+  text-align: center;
+}
+
+form {
+  ion-item {
+    --padding-end: 0;
+  }
+
+  .image-preview {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+
+    img {
+      max-width: 100%;
+      max-height: 200px;
+    }
+  }
+
+  ion-button {
+    margin-top: 16px;
+  }
+}

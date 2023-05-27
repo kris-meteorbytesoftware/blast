@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start" [routerLink]="['/feed']">
+      <ion-icon name="close"></ion-icon>
+    </ion-buttons>
+    <ion-title>New Post</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="imageForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="stacked">Image</ion-label>
+      <input
+        type="file"
+        (change)="onFileSelected($event)"
+        accept="image/*"
+        formControlName="image"
+      />
+    </ion-item>
+
+    <div *ngIf="imagePreview" class="image-preview">
+      <img [src]="imagePreview" alt="Selected Image" />
+    </div>
+
+    <ion-item>
+      <ion-label position="stacked">Caption</ion-label>
+      <ion-textarea
+        formControlName="caption"
+        placeholder="Enter a caption"
+      ></ion-textarea>
+    </ion-item>
+
+    <ion-button expand="full" type="submit" [disabled]="!imageForm.valid"
+      >Upload</ion-button
+    >
+  </form>
+</ion-content>
