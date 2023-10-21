@@ -1,0 +1,63 @@
+<!-- src/app/home/home.page.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title> Business </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <p>business works!</p>
+  <ion-button [routerLink]="['./purchase/landmine']"
+    >Purchase Landmine</ion-button
+  >
+  <!-- src/app/dropdown/dropdown.component.html -->
+  <mat-form-field>
+    <mat-select placeholder="Switch Business">
+      <mat-option *ngFor="let option of businesses" [value]="option.id">
+        {{ option.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</ion-content>
+
+<ion-toolbar>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button
+        tab="home"
+        [routerLink]="['/feed']"
+        routerLinkActive="active-link"
+      >
+        <ion-icon name="home-outline"></ion-icon>
+        <ion-label aria-label="home">Home</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="Purchase">
+        <ion-icon name="ion-social-usd-outline"></ion-icon>
+        <ion-label aria-label="purchase">Purchase</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="newpost" [routerLink]="['/newpost']">
+        <ion-icon name="add-outline"></ion-icon>
+        <ion-label aria-label="new post">New Post</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="notifications">
+        <ion-icon name="notifications-outline"></ion-icon>
+        <ion-label aria-label="notifications">Notifications</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button
+        tab="profile"
+        [routerLink]="['/profile']"
+        routerLinkActive="active-link"
+      >
+        <ion-icon name="person-outline"></ion-icon>
+        <ion-label aria-label="profile">Profile</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-toolbar>

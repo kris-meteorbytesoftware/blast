@@ -1,38 +1,98 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start" [routerLink]="['/feed']">
-      <ion-icon name="close"></ion-icon>
+    <!-- Back button -->
+    <ion-buttons slot="secondary">
+      <ion-button routerLink="/feed">
+        <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
+      </ion-button>
     </ion-buttons>
-    <ion-title>New Post</ion-title>
+
+    <ion-title>New Blast</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <form [formGroup]="imageForm" (ngSubmit)="onSubmit()">
-    <ion-item>
-      <ion-label position="stacked">Image</ion-label>
-      <input
-        type="file"
-        (change)="onFileSelected($event)"
-        accept="image/*"
-        formControlName="image"
-      />
-    </ion-item>
+<ion-content>
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-half">
+          <!-- <ia-notification [className]="notificationType" [message]="errorMessage"></ia-notification> -->
+          <form
+            enctype="multipart/form-data"
+            [formGroup]="createPostForm"
+            (ngSubmit)="createPost()"
+          >
+            <img *ngIf="imageUrl && imageUrl.length > 5" [src]="imageUrl" />
+            <div>{{ uploadPercent | async }}</div>
+            <ion-item lines="none" color="light">
+              <ion-button expand="full">
+                <ion-icon lazy="true" slot="start" name="image"></ion-icon>
+                <ion-label slot="end">Upload Image</ion-label>
 
-    <div *ngIf="imagePreview" class="image-preview">
-      <img [src]="imagePreview" alt="Selected Image" />
+                <input
+                  type="file"
+                  id="imageInput"
+                  formControlName="imageUri"
+                  accept="image/*"
+                  (change)="onFileSelected($event)"
+                />
+              </ion-button>
+            </ion-item>
+
+            <p class="help is-danger" *ngIf="isError">
+              something went wrong, try again
+            </p>
+            <div *ngIf="selectedFile">
+              <img [src]="previewUrl" alt="Preview Image" />
+            </div>
+
+            <ion-item lines="none" color="light">
+              <ion-label position="floating" for="blastText"
+                >Caption (Optional)</ion-label
+              >
+              <ion-textarea
+                class="textarea"
+                name="blastText"
+                placeholder="Write a caption..."
+                formControlName="blastText"
+              ></ion-textarea>
+            </ion-item>
+
+            <ion-item lines="none" color="light">
+              <ion-label position="floating" for="blastSavedCap"
+                >How Many Saves</ion-label
+              >
+              <ion-input
+                type="number"
+                name="blastSavedCap"
+                formControlName="blastSavedCap"
+              ></ion-input>
+            </ion-item>
+
+            <ion-item lines="none" color="light">
+              <ion-button
+                [disabled]="!createPostForm.valid"
+                type="button"
+                class="button is-link"
+                (click)="createPost()"
+              >
+                Post
+              </ion-button>
+            </ion-item>
+          </form>
+        </div>
+      </div>
     </div>
-
-    <ion-item>
-      <ion-label position="stacked">Caption</ion-label>
-      <ion-textarea
-        formControlName="caption"
-        placeholder="Enter a caption"
-      ></ion-textarea>
-    </ion-item>
-
-    <ion-button expand="full" type="submit" [disabled]="!imageForm.valid"
-      >Upload</ion-button
-    >
-  </form>
+  </section>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-button (click)="scan()">
+        <span class="material-symbols-outlined"> radar </span>
+      </ion-button>
+    </ion-buttons>
+    <div *ngIf="people">People: {{people}}</div>
+  </ion-toolbar>
+</ion-footer>

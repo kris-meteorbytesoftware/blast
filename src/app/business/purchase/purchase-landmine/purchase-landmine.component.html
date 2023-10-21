@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="secondary">
+      <ion-button routerLink="/business">
+        <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title> Time & Distance Form </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form">
+    <ion-list>
+      <ion-item>
+        <ion-label>Start Date</ion-label>
+        <ion-datetime
+          displayFormat="YYYY-MM-DD"
+          formControlName="startDate"
+          presentation="date"
+          [min]="minDate"
+          [max]="maxDate"
+        ></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Time</ion-label>
+        <ion-select formControlName="time">
+          <ion-select-option value="1">1 Day</ion-select-option>
+          <ion-select-option value="3">3 Days</ion-select-option>
+          <ion-select-option value="10">10 Days</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Distance</ion-label>
+        <ion-select formControlName="distance">
+          <ion-select-option value="25">Quarter Mile</ion-select-option>
+          <ion-select-option value="50">Half Mile</ion-select-option>
+          <ion-select-option value="75">3/4 Mile</ion-select-option>
+          <ion-select-option value="100">1 Mile</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-button expand="full" (click)="submitForm()">Submit</ion-button>
+  </form>
+</ion-content>

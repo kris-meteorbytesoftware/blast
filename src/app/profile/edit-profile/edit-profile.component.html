@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="secondary">
+      <ion-button routerLink="/profile">
+        <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Edit Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="profileForm">
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input formControlName="email" type="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">First Name</ion-label>
+      <ion-input formControlName="firstName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Last Name</ion-label>
+      <ion-input formControlName="lastName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Phone</ion-label>
+      <ion-input formControlName="phone" type="tel"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Profile Picture</ion-label>
+      <ion-input type="file" (change)="onFileChange($event)"></ion-input>
+    </ion-item>
+    <div class="preview">
+      <div class="circle" *ngIf="imagePreview || initials.length > 0">
+        <img [src]="imagePreview" *ngIf="imagePreview" />
+
+        <div *ngIf="!imagePreview" class="initials">
+          {{ initials }}
+        </div>
+      </div>
+    </div>
+    <ion-button expand="full" (click)="onSubmit()">Save</ion-button>
+  </form>
+</ion-content>

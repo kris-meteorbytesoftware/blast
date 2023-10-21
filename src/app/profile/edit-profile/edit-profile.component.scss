@@ -1,0 +1,28 @@
+.preview {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.circle {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3670b2;
+
+  img {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+  }
+
+  .initials {
+    color: #ffffff;
+    font-size: 20px;
+    line-height: 19px;
+    letter-spacing: 0.2625px;
+  }
+}

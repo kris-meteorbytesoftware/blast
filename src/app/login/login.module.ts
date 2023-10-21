@@ -10,6 +10,7 @@ import { LoginPage } from './login.page';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { ForgotPasswordPage } from './forgot-password/forgot-password.page';
 
 @NgModule({
   imports: [
@@ -22,6 +23,6 @@ import { MatInputModule } from '@angular/material/input';
     MatInputModule,
     MatButtonModule,
   ],
-  declarations: [LoginPage],
+  declarations: [LoginPage, ForgotPasswordPage],
 })
 export class LoginPageModule {}

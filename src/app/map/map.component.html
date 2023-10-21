@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title> Capacitor Google Map play </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- <capacitor-google-map #map></capacitor-google-map> -->
+  <div id="map-canvas">
+    <google-map
+      height="100%"
+      width="100%"
+      [zoom]="zoom"
+      [center]="center"
+      [options]="options"
+      (mapClick)="click($event)"
+    >
+      <map-marker
+        #markerElem
+        *ngFor="let marker of markers"
+        [position]="marker.position"
+        [label]="marker.label"
+        [title]="marker.title"
+        [options]="marker.options"
+        [icon]="marker.icon"
+        (mapClick)="openInfo(marker, marker.info)"
+      >
+      </map-marker>
+
+      <map-info-window>{{ infoContent }}</map-info-window>
+    </google-map>
+  </div>
+  <div class="map-pill" [ngClass]="{ 'map-pill-show': showMapPill }">
+    <div
+      class="youps-pill-logo"
+      [ngStyle]="{
+        'background-image': selectedMarker.icon?.url
+          ? 'url(' + selectedMarker.icon.url + ')'
+          : 'none'
+      }"
+    ></div>
+    <div class="youps-pill-content">
+      <div class="youps-pill-label">{{ selectedMarker.title }}</div>
+      <div class="youps-pill-distance-time">{{ distance }} / {{ time }}</div>
+    </div>
+  </div>
+</ion-content>
+
+<app-bottom-toolbar></app-bottom-toolbar>

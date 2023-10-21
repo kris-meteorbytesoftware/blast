@@ -1,13 +1,21 @@
+import { ShellService } from './../shell/shell.service';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { DashboardPage } from './dashboard.page';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: DashboardPage
-  }
+  ShellService.childRoutes([
+    {
+      path: '',
+      redirectTo: '/dashboard',
+      pathMatch: 'full',
+    },
+    {
+      path: 'dashboard',
+      component: DashboardPage,
+    },
+  ]),
 ];
 
 @NgModule({

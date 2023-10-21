@@ -1,0 +1,13 @@
+<div *ngFor="let error of errors">
+  <ion-item
+    [lines]="lines"
+    [color]="color"
+    *ngIf="control.hasError(error.type) && (control.dirty || control.touched)"
+  >
+    <ion-text color="danger">
+      <small ion-color-danger class="error-message text-danger text-center">
+        {{ error.message }}
+      </small>
+    </ion-text>
+  </ion-item>
+</div>

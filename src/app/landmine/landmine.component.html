@@ -1,0 +1,15 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="insta-feed-header">
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="insta-font"> Landmine </ion-title>
+    <ion-buttons slot="end" [routerLink]="['/feed']">
+      <ion-icon name="close"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <p>Landmines works!</p>
+  {{ id }}
+</ion-content>

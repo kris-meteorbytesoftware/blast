@@ -1,0 +1,28 @@
+.progress-bar-container {
+  position: relative;
+  top: -43px;
+  width: 100%;
+  color: black;
+  text-align: center;
+  .progress-bar {
+    padding: 4px;
+    min-width: 10%;
+    overflow: hidden;
+    white-space: nowrap;
+    background-color: grey;
+    transition: 2s linear;
+    transition-property: width, background-color;
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25),
+      inset 0 1px rgba(255, 255, 255, 0.1);
+  }
+}
+
+.progress-bar.green {
+  background-color: green;
+}
+.progress-bar.yellow {
+  background-color: yellow;
+}
+.progress-bar.red {
+  background-color: red;
+}

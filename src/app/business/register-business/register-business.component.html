@@ -1,0 +1,27 @@
+<ion-content>
+  <form [formGroup]="businessForm" (ngSubmit)="submitForm()">
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Business Name</ion-label>
+        <ion-input formControlName="businessName" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Website</ion-label>
+        <ion-input formControlName="website"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Address</ion-label>
+        <ion-input
+          formControlName="address"
+          id="autocomplete-input"
+          required
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Logo</ion-label>
+        <input type="file" (change)="onFileChange($event)" />
+      </ion-item>
+    </ion-list>
+    <ion-button type="submit" expand="full">Submit</ion-button>
+  </form>
+</ion-content>
